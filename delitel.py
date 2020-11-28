@@ -1,7 +1,7 @@
 import random
 
 
-def test(gcd, n_iter):
+def test(gcd, n_iter=100):
     for i in range(n_iter):
         c = random.randint(0, 1024)
         a = c * random.randint(0, 128)
@@ -11,3 +11,14 @@ def test(gcd, n_iter):
         assert gcd(a, 1) == gcd(b, 1) == 1
         d = gcd (a, b)
         assert a % b == b % a == 0
+
+
+def gcd1(a, b):
+    assert a>=0 and b>=0
+    for d in reversed(range(1, max(a, b)+1)):
+        if a % d == b % d == 0:
+            return d
+
+
+print(gcd1(4,2))
+print(test(gcd1))
